@@ -1,0 +1,166 @@
+{
+   "Recommended Movies" :[
+    {
+      "img" : "https://res.cloudinary.com/doaaeqnk2/image/upload/v1763725521/Raju_Weds_Rambai_vgu0z8.avif",
+      "title" : "Raju Weds Rambai",
+      "Gerne" : "Drama/Romantic"
+    },
+    {
+        
+         "img" : "https://res.cloudinary.com/doaaeqnk2/image/upload/v1763725497/12A_Railway_Colony_pv8rhz.avif",
+      "title" : "12A Railway Colony",
+      "Gerne" : "Horroe/Thriller"
+    },
+    {
+        
+      "img" : "https://res.cloudinary.com/doaaeqnk2/image/upload/v1763725519/Premante_zowitk.avif",
+      "title" : "Premante",
+      "Gerne" : "Comedy/Drama/Romantic"  
+    },
+    {
+        
+         "img" : "https://res.cloudinary.com/doaaeqnk2/image/upload/v1763725515/mastii_4_njtf0q.avif",
+      "title" : "Mastii 4",
+      "Gerne" : "Adult/Comedy"
+    },
+    {
+        
+           "img" : "https://res.cloudinary.com/doaaeqnk2/image/upload/v1763725524/The_Girlfriend_ddjhop.avif",
+      "title" : "The Girlfriend",
+      "Gerne" : "Drama/Romantic"
+    },
+    {
+        
+         "img" : "https://res.cloudinary.com/doaaeqnk2/image/upload/v1763725498/120_Bahadur_tlls3f.avif",
+      "title" : "120 Bahadur",
+      "Gerne" : "Action/Historical/War"
+    },
+    {
+        
+         "img" : "https://res.cloudinary.com/doaaeqnk2/image/upload/v1763725523/Sisu_qsppag.avif",
+      "title" : "Sisu: Road to Revenge",
+      "Gerne" : "Action/War"
+    },
+    {
+        
+        "img" : "https://res.cloudinary.com/doaaeqnk2/image/upload/v1763725530/Wicked_oneyik.avif",
+      "title" : "Wicked: For Good ",
+      "Gerne" : "Family/Fantasy/Musical" 
+    },
+    {
+        
+        "img" : "https://res.cloudinary.com/doaaeqnk2/image/upload/v1763725530/Wicked_oneyik.avif",
+      "title" : "De de Pyaar De 2",
+      "Gerne" : "Comedy/Drama/Romantic" 
+    },
+    {
+        
+         "img" : "https://res.cloudinary.com/doaaeqnk2/image/upload/v1763725530/Wicked_oneyik.avif",
+      "title" : "Paanch Minar",
+      "Gerne" : "Comedy/Crime/Thiller" 
+    }
+],
+   "Events" : [
+    {
+        "img" : "https://res.cloudinary.com/doaaeqnk2/image/upload/v1763725498/comedy-shows-collection-202211140440_cs6vjz.avif"
+    },
+    {
+        "img" : "https://res.cloudinary.com/doaaeqnk2/image/upload/v1763725498/amusement-parks-banner-desktop-collection-202503251132_krmgi2.avif" 
+    },
+    {
+        "img" : "https://res.cloudinary.com/doaaeqnk2/image/upload/v1763725526/theatre-shows-collection-202211140440_fko0on.avif" 
+    },
+    {
+
+        "img" : "https://res.cloudinary.com/doaaeqnk2/image/upload/v1763725512/kids-banner-desktop-collection-202503251132_1_nvtsuq.avif" 
+    },
+    {
+
+        "img" : "https://res.cloudinary.com/doaaeqnk2/image/upload/v1763725497/adventure-fun-collection-202211140440_jjgjo7.avif" 
+    },
+    {
+
+        "img" : "https://res.cloudinary.com/doaaeqnk2/image/upload/v1763725517/music-shows-collection-202211140440_clfcv0.avif" 
+    },
+    {
+        "img" : "https://res.cloudinary.com/doaaeqnk2/image/upload/v1763725499/arts-crafts-collection-202211140440_qm5jj6.avif"
+    },
+    {
+        "img" : "https://res.cloudinary.com/doaaeqnk2/image/upload/v1763725530/workshop-and-more-web-collection-202211140440_i4mftn.avif"
+    },
+    {
+    
+        "img" : "https://res.cloudinary.com/doaaeqnk2/image/upload/v1763725511/interactive-games-collection-202211140440_c7jf83.avif"
+    },
+    {
+
+        "img" : "https://res.cloudinary.com/doaaeqnk2/image/upload/v1763725528/upskill-collection-202211140440_foxcor.avif"
+    }
+  ],
+    "Music" :[
+    {
+         
+        "img" : "https://res.cloudinary.com/doaaeqnk2/image/upload/v1763725504/et00456000-evaefydfzg-portrait_irfxrr.avif",
+        "title":"Satrangi Re by Sonu Nigam-Hyderabad",
+        "Subtitle":"The League: Hyderabad Concerts"
+    },
+      {
+         
+        "img" : "https://res.cloudinary.com/doaaeqnk2/image/upload/v1763968198/et00472144-hzddpwkygf-portrait_x3tqje.avif",
+        "title":"Sunset & Skylines 2.0",
+        "Subtitle":"Kingdom klub and kitchen: Hydereabad Club Gigs"
+    },
+      {
+         
+        "img" : "https://res.cloudinary.com/doaaeqnk2/image/upload/v1763968197/et00451700-fgggfepgrg-portrait_cgjtsf.avif",
+        "title":"Sunburn Arena ft. DJ Snake-Hyderabad",
+        "Subtitle":"Venue To Be Announced : Hyderabad Concerts"
+    },
+      {
+         
+        "img" : "https://res.cloudinary.com/doaaeqnk2/image/upload/v1763968198/et00468349-kahpklkwgg-portrait_u6covk.avif",
+        "title":"MAHESH KALE ",
+        "Subtitle":"Shilpakala Vedika"
+    },
+      {
+         
+        "img" : "https://res.cloudinary.com/doaaeqnk2/image/upload/v1763968197/et00463567-beyvkdxlak-portrait_ymjczz.avif",
+        "title":"Satrangi Re by Sonu Nigam-Hyderabad",
+        "Subtitle":"The League: Hyderabad Concerts"
+    },
+      {
+         
+        "img" : "https://res.cloudinary.com/doaaeqnk2/image/upload/v1763725504/et00456000-evaefydfzg-portrait_irfxrr.avif",
+        "title":"Satrangi Re by Sonu Nigam-Hyderabad",
+        "Subtitle":"The League: Hyderabad Concerts"
+    },
+      {
+         
+        "img" : "https://res.cloudinary.com/doaaeqnk2/image/upload/v1763725504/et00456000-evaefydfzg-portrait_irfxrr.avif",
+        "title":"Satrangi Re by Sonu Nigam-Hyderabad",
+        "Subtitle":"The League: Hyderabad Concerts"
+    }
+],
+"premieres":[
+  {
+    "img":"https://res.cloudinary.com/doaaeqnk2/image/upload/v1764073472/et00470268-lsuufjpbfq-portrait_luqpqv.avif",
+    "title": "Soul on Fire",
+    "language": "English"
+  },
+   {
+    "img":"https://res.cloudinary.com/doaaeqnk2/image/upload/v1764073472/et00470458-acfjjersya-portrait_pimdiu.avif",
+    "title": "Eleanor the Great",
+    "language": "English"
+  },
+   {
+    "img":"https://res.cloudinary.com/doaaeqnk2/image/upload/v1764073472/et00448747-kswpdupsuk-portrait_kas0oi.avif",
+    "title": "Caught Stealing",
+    "language": "English"
+  },
+   {
+    "img":"https://res.cloudinary.com/doaaeqnk2/image/upload/v1764073471/et00471299-hgqhbyclje-portrait_tjwlcp.avif",
+    "title": "Ariella",
+    "language": "English"
+  }
+]
+}
