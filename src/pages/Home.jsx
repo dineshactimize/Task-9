@@ -11,6 +11,7 @@ import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
+import { useNavigate } from 'react-router';
 
 
 export default function Home() {
@@ -20,27 +21,41 @@ export default function Home() {
      dispatch(getProductDataActionInitiate());
      },[dispatch])
 
-  // Read redux slice defensively. The reducer stores an object { data: [], loading, error }
-  const productSlice = useSelector((state) => state.getproductdata || {});
-  const dataArray = Array.isArray(productSlice.data) ? productSlice.data : [];
+  const getproductdata = useSelector((state) => state.getproductdata);
+  const d=getproductdata.data;
 
+  console.log("hjgfjasgkfas",d[0]?.Music, typeof d)
   // useEffect(()=> {
   //   if (getproductdata){
   //     setProducts(getproductdata)
   //   }
   // },[getproductdata]);
-  const firstItem = dataArray[0] || {};
-  const events = firstItem.Events || [];
-  const music = firstItem.Music || [];
-  const movies = firstItem['Recommended Movies'] || [];
-  const premieres = firstItem.premieres || [];
-  console.log('2',events)
+  const  id=Object.keys(d)[0];
+  console.log("id",d[id])
+  const events=d[id]?.Events||[];
+  const music=d[id]?.Music||[];
+  const movies=d[id]?.['Recommended Movies']||[];
+  const premieres=d[id]?.premieres||[];
+  console.log('music',music)
 
   console.log('getproductdataaaaaaaa',getproductdata)
+  const navigate=useNavigate();
+ const redirectToMoviePage=(id)=>{
+  navigate(`/movies/${id}`)
 
+ }
+
+ useEffect(() => {
+     window.scrollTo(0, 0);
+   }, []);
+   
   return (
     <>
     
+
+    <Container>
+    <Box sx={{display:'flex',justifyContent:'end'}}>
+      <Box sx={{width:"100%"}}>
       <Swiper 
         slidesPerView={1}
         centeredSlides={false}
@@ -49,12 +64,12 @@ export default function Home() {
           clickable: true,
         }}
         modules={[Pagination]}
-        className="mySwiper"
+        // className="mySwipe"
        
       >
        
         <SwiperSlide >
-          <img src="https://res.cloudinary.com/doaaeqnk2/image/upload/v1763724526/1760430005960_popccweb_uhrlbp.avif" alt="image" />
+          <img src="https://res.cloudinary.com/doaaeqnk2/image/upload/v1763724526/1760430005960_popccweb_uhrlbp.avif" alt="image" style={{width:1550}} />
         </SwiperSlide>
         <SwiperSlide>
           <img src="https://res.cloudinary.com/doaaeqnk2/image/upload/v1763724526/1763640698741_ariellaweb_sieteo.avif" alt="image" />
@@ -67,6 +82,11 @@ export default function Home() {
         </SwiperSlide>
       
       </Swiper>
+      
+      </Box>
+      </Box>
+      </Container>
+
         <Container sx={{ mt: 4 }}>
           <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 2 }}>
             <Typography variant='h4'>Recommended Movies</Typography>
@@ -85,9 +105,10 @@ export default function Home() {
               800: { slidesPerView: 3 },
               500: { slidesPerView: 1 }
             }}
+           
           >
             {movies?.map((itemm, index) => (
-              <SwiperSlide key={index}>
+              <SwiperSlide key={index} onClick={()=>redirectToMoviePage(itemm.title)}> 
                 <Card sx={{ width: 255, borderRadius: 4, overflow: 'hidden',my:4}} elevation={3}>
                   <img
                     src={itemm.img}
@@ -103,10 +124,8 @@ export default function Home() {
             ))}
           </Swiper>
         </Container>
-{/* <div style={{padding:'48px 0px', height:199.33, width:1536}}>
-    <img src="https://res.cloudinary.com/doaaeqnk2/image/upload/v1763725523/stream-leadin-web-collection-202210241242_v2jpzi.avif" alt="" style={{ width: 1240, height: 103.33, objectFit: 'cover',   }}/>
 
-</div> */}
+
 <Box>
   <Box sx={{my:' 40px',mx:16}}>
         <img src="https://res.cloudinary.com/doaaeqnk2/image/upload/v1763725523/stream-leadin-web-collection-202210241242_v2jpzi.avif" alt="" style={{ width: 1240, height: 103.33, objectFit: 'cover',   }}/>
@@ -141,12 +160,12 @@ export default function Home() {
         </Swiper>
       </Container>
 
-
+     <Container>
       <Box>
         <Box>
 
         </Box>
-        <Box>
+        <Box sx={{display:'flex',justifyContent:'space-evenly'}}>
          {premieres?.map((itemm) => (
               <Card sx={{ width: 255, height: 513.95, borderRadius: 4, overflow: 'hidden',my:4 }} elevation={2}>
                 <img src={itemm.img} alt={itemm.title || 'music'} style={{ width: 255, height: 414, objectFit: 'cover' }} />
@@ -158,10 +177,76 @@ export default function Home() {
           ))}
         </Box>
       </Box>
+      </Container>
       
 
       <Container sx={{ mt: 6, mb: 6 }}>
         <Typography variant='h4' sx={{ mb: 2 }}>Your Music Studio</Typography>
+        <Swiper
+          slidesPerView={4}
+          spaceBetween={30}
+          freeMode={true}
+          pagination={{ clickable: true }}
+          modules={[FreeMode, Pagination]}
+          className="mySwiper"
+          breakpoints={{
+            1400: { slidesPerView: 4 },
+            1100: { slidesPerView: 3 },
+            800: { slidesPerView: 2 },
+            500: { slidesPerView: 1 }
+          }}
+        >
+          {music?.map((itemm, index) => (
+            <SwiperSlide key={index}>
+              <Card sx={{ width: 255, height: 513.95, borderRadius: 4, overflow: 'hidden',my:4 }} elevation={2}>
+                <img src={itemm.img} alt={itemm.title || 'music'} style={{ width: 255, height: 414, objectFit: 'cover' }} />
+                <CardContent sx={{ py: 2 }}>
+                  <Typography variant="subtitle2" noWrap>{itemm.title}</Typography>
+                  <Typography variant="caption" color="text.secondary">{itemm.Subtitle}</Typography>
+                </CardContent>
+              </Card>
+              
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </Container>
+
+
+      <Container sx={{ mt: 6, mb: 6 }}>
+        <Typography variant='h4' sx={{ mb: 2 }}>Outdoor events</Typography>
+        <Swiper
+          slidesPerView={4}
+          spaceBetween={30}
+          freeMode={true}
+          pagination={{ clickable: true }}
+          modules={[FreeMode, Pagination]}
+          className="mySwiper"
+          breakpoints={{
+            1400: { slidesPerView: 4 },
+            1100: { slidesPerView: 3 },
+            800: { slidesPerView: 2 },
+            500: { slidesPerView: 1 }
+          }}
+        >
+          {music?.map((itemm, index) => (
+            <SwiperSlide key={index}>
+              <Card sx={{ width: 255, height: 513.95, borderRadius: 4, overflow: 'hidden',my:4 }} elevation={2}>
+                <img src={itemm.img} alt={itemm.title || 'music'} style={{ width: 255, height: 414, objectFit: 'cover' }} />
+                <CardContent sx={{ py: 2 }}>
+                  <Typography variant="subtitle2" noWrap>{itemm.title}</Typography>
+                  <Typography variant="caption" color="text.secondary">{itemm.Subtitle}</Typography>
+                </CardContent>
+              </Card>
+              
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </Container>
+
+
+
+      <Container sx={{ mt: 6, mb: 6 }}>
+        <Typography variant='h4' sx={{ mb: 2 }}>Laughter Therapy</Typography>
         <Swiper
           slidesPerView={4}
           spaceBetween={30}

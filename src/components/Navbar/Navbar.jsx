@@ -16,6 +16,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import bookmyshowLogo from '../../Assests/images/pngegg.png';
+import { NavLink } from 'react-router';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -133,7 +134,7 @@ export default function PrimarySearchAppBar() {
       <MenuItem>
         <IconButton
           size="large"
-          aria-label="show 17 new notifications"
+          // aria-label="show 17 new notifications"
           color="inherit"
         >
           <Badge badgeContent={17} color="error">
@@ -157,6 +158,8 @@ export default function PrimarySearchAppBar() {
     </Menu>
   );
   return (
+    <> 
+  <Box>
     <Box sx={{ flexGrow: 1 }}>
       <AppBar sx={{bgcolor:"white",color:"black"}}position="static">
         <Toolbar>
@@ -218,6 +221,15 @@ export default function PrimarySearchAppBar() {
       {renderMobileMenu}
       {renderMenu}
     </Box>
-    
+    <Box>
+      {/* <Nav>
+        <NavLink to="/" style={{ marginRight: '20px', textDecoration: 'none', color: 'black', fontWeight: 'bold' }}>
+
+        </NavLink>
+      </Nav> */}
+    </Box>
+  </Box>
+   
+      </>
   );
 }
