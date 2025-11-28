@@ -17,6 +17,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import bookmyshowLogo from '../../Assests/images/pngegg.png';
 import { NavLink } from 'react-router';
+import BasicModal from '../../pages/Auth';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -59,6 +60,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function PrimarySearchAppBar() {
+  const authRef = React.useRef(null);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -102,7 +104,14 @@ export default function PrimarySearchAppBar() {
       onClose={handleMenuClose}
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem
+        onClick={() => {
+          handleMenuClose();
+          authRef.current?.open();
+        }}
+      >
+        My account
+      </MenuItem>
     </Menu>
   );
 
@@ -170,7 +179,7 @@ export default function PrimarySearchAppBar() {
             component="div"
             sx={{ display: { xs: 'none', sm: 'block' }, mr: 2 }}
           >
-           <img src={bookmyshowLogo} alt="BookMyShow" style={{ height: '40px', objectFit: 'contain' }} />
+           <a href="/"><img src={bookmyshowLogo} alt="BookMyShow" style={{ height: '40px', objectFit: 'contain' }} /></a>
           </Typography>
           <Search>
             <SearchIconWrapper>
@@ -220,14 +229,9 @@ export default function PrimarySearchAppBar() {
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
+      <BasicModal ref={authRef} />
     </Box>
-    <Box>
-      {/* <Nav>
-        <NavLink to="/" style={{ marginRight: '20px', textDecoration: 'none', color: 'black', fontWeight: 'bold' }}>
-
-        </NavLink>
-      </Nav> */}
-    </Box>
+    
   </Box>
    
       </>

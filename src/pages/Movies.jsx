@@ -21,6 +21,8 @@ import { useParams } from 'react-router';
 
 
 
+
+
 const Movies = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -36,9 +38,41 @@ const Movies = () => {
   console.log('jjidsfhuygffuuWHF', movies)
   const movie = movies.find((temp) => (temp.title === id)) || []
   console.log('dafhaiugf', movie)
-   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  //  useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, []);
+ 
+ const handlePayment = async () => {
+   
+      const options = {
+        key: "rzp_test_Rl9SLwtladWoZT",  
+        amount: 17000*100,
+        currency: 'INR',
+        name: "Movie Ticket Booking",
+        description: `Booking for ${movie.title}`,
+        // order_id: data.id,
+        handler: function (response) {
+          alert("Payment Successful!");
+          console.log("Payment Response:", response);
+        },
+        prefill: {
+          name: "Dinesh",
+          email: "dinesh@example.com",
+          contact: "7777777777",
+        },
+        theme: {
+          color: "#8B5CF6",
+        },
+      };
+       const rzp1 = new window.Razorpay(options);
+                    rzp1.on("payment.failed", function (response) {
+                        console.log("Payment failed", response.error);
+                        alert("Payment failed. Please try again.");
+                    });
+                    rzp1.open();
+  }
+
+
   return (
     <div>
 
@@ -81,7 +115,7 @@ const Movies = () => {
 
 
             <Stack direction="row" mt={3} spacing={1} alignItems="center">
-              <Button size='small' variant="contained" fullWidth color="error" sx={{ width: '214.4', height: '48', padding: '12px 8px' }}>
+              <Button size='small' variant="contained" fullWidth color="error" sx={{ width: '214.4', height: '48', padding: '12px 8px' }} onClick={handlePayment}>
                 Book Tickets
               </Button>
 
@@ -96,7 +130,7 @@ const Movies = () => {
       <Container>
         <Box>
           <Box >
-            <Typography variant='h4' sx={{ pb: 2, fontWeight: "bold" }}>
+            <Typography variant='h4' sx={{ pb: 2, fontWeight: "bold",mt:5 }}>
               About the movie
             </Typography>
             <Typography sx={{ width: 910.28 }}>
