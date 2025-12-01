@@ -6,18 +6,19 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
-import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
+import Drawer from '@mui/material/Drawer';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import MailIcon from '@mui/icons-material/Mail';
-import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import bookmyshowLogo from '../../Assests/images/pngegg.png';
-import { NavLink } from 'react-router';
 import BasicModal from '../../pages/Auth';
+import { Avatar } from '@mui/material';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -49,7 +50,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: 'inherit',
   '& .MuiInputBase-input': {
     padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create('width'),
     width: '100%',
@@ -66,6 +66,20 @@ export default function PrimarySearchAppBar() {
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+  const [picture, setPicture] = React.useState();
+  React.useEffect(() => {
+    const saved = localStorage.getItem("google_user");
+    if (saved) {
+      const userObj = JSON.parse(saved);   // ← REQUIRED
+      console.log("Parsed user:", userObj);
+      setPicture(userObj.picture);
+      // ← now works
+    }
+  }, []);
+  React.useEffect(() => {
+    console.log("PICTURE UPDATED:", picture);
+  }, [picture]);
+
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -80,11 +94,23 @@ export default function PrimarySearchAppBar() {
     handleMobileMenuClose();
   };
 
+  const logout=()=>{
+    setPicture(null)
+  }
+
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
-   
-  
+  const [drawerOpen, setDrawerOpen] = React.useState(false);
+
+  const toggleDrawer = (open) => (event) => {
+    if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
+    setDrawerOpen(open);
+  };
+
+
 
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
@@ -112,6 +138,7 @@ export default function PrimarySearchAppBar() {
       >
         My account
       </MenuItem>
+      <MenuItem onClick={logout}>Log Out</MenuItem>
     </Menu>
   );
 
@@ -132,108 +159,146 @@ export default function PrimarySearchAppBar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem>
-        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="error">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem>
-      <MenuItem>
-        <IconButton
-          size="large"
-          // aria-label="show 17 new notifications"
-          color="inherit"
-        >
-          <Badge badgeContent={17} color="error">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
+
       <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          size="large"
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
+       <IconButton
+                  size="large"
+                  edge="end"
+                  aria-label="account of current user"
+                  aria-controls={menuId}
+                  aria-haspopup="true"
+                  onClick={handleProfileMenuOpen}
+                  color="inherit"
+                >
+                  {picture ? (
+                    <Avatar
+                      key={picture}          
+                      src={picture}
+                      alt="Google Profile"
+                      referrerPolicy="no-referrer"
+                      imgProps={{ referrerPolicy: "no-referrer" }} 
+                      sx={{
+                        width: 25,
+                        height: 25,
+                        bgcolor: "transparent",
+                      }}
+                    />
+                  ) : (
+                    <AccountCircle sx={{ fontSize: 35 }} />
+                  )}
+                </IconButton>
         <p>Profile</p>
       </MenuItem>
+       {/* <MenuItem onClick={logout}>Log Out</MenuItem> */}
     </Menu>
   );
   return (
-    <> 
-  <Box>
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar sx={{bgcolor:"white",color:"black"}}position="static">
-        <Toolbar>
-          
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ display: { xs: 'none', sm: 'block' }, mr: 2 }}
-          >
-           <a href="/"><img src={bookmyshowLogo} alt="BookMyShow" style={{ height: '40px', objectFit: 'contain' }} /></a>
-          </Typography>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search for Movies,Events,Plays,Sports and Activities"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
-          <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <IconButton
-              size="large"
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
-            <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
-          </Box>
-          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              color="inherit"
-            >
-              <MoreIcon />
-            </IconButton>
-          </Box>
-        </Toolbar>
-      </AppBar>
-      {renderMobileMenu}
-      {renderMenu}
-      <BasicModal ref={authRef} />
-    </Box>
-    
-  </Box>
-   
-      </>
+    <>
+      <Box sx={{ pb: 5 }}>
+        <Box sx={{ flexGrow: 1 }}>
+          <AppBar sx={{ bgcolor: "white", color: "black" }} position="static">
+            <Toolbar>
+
+              <Typography
+                variant="h6"
+                noWrap
+                component="div"
+                sx={{ display: 'block', mr: 2 }}
+              >
+                <a href="/"><img src={bookmyshowLogo} alt="BookMyShow" style={{ height: 40, objectFit: 'contain', maxWidth: '140px' }} /></a>
+              </Typography>
+              <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+                <Search>
+                  <SearchIconWrapper>
+                    <SearchIcon />
+                  </SearchIconWrapper>
+                  <StyledInputBase
+                    placeholder="Search for Movies,Events,Plays,Sports and Activities"
+                    inputProps={{ 'aria-label': 'search' }}
+                  />
+                </Search>
+              </Box>
+              <Box sx={{ flexGrow: 1 }} />
+              <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+
+                <IconButton
+                  size="large"
+                  edge="end"
+                  aria-label="account of current user"
+                  aria-controls={menuId}
+                  aria-haspopup="true"
+                  onClick={handleProfileMenuOpen}
+                  color="inherit"
+                >
+                  {picture ? (
+                    <Avatar
+                      key={picture}                
+                      src={picture}
+                      alt="Google Profile"
+                      referrerPolicy="no-referrer"
+                      imgProps={{ referrerPolicy: "no-referrer" }}  
+                      sx={{
+                        width: 40,
+                        height: 40,
+                        bgcolor: "transparent",
+                      }}
+                    />
+                  ) : (
+                    <AccountCircle sx={{ fontSize: 35 }} />
+                  )}
+                </IconButton>
+                <IconButton
+                  size="large"
+                  edge="start"
+                  color="inherit"
+                  aria-label="open drawer"
+                  sx={{ mr: 2 }}
+                >
+                  <MenuIcon />
+                </IconButton>
+              </Box>
+              <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+                <IconButton
+                  size="large"
+                  aria-label="show more"
+                  aria-controls={mobileMenuId}
+                  aria-haspopup="true"
+                  onClick={handleMobileMenuOpen}
+                  color="inherit"
+                >
+                  <MoreIcon />
+                </IconButton>
+                <IconButton
+                  size="large"
+                  aria-label="open navigation"
+                  edge="end"
+                  color="inherit"
+                  onClick={toggleDrawer(true)}
+                >
+                  <MenuIcon />
+                </IconButton>
+              </Box>
+              <Drawer anchor="right" open={drawerOpen} onClose={toggleDrawer(false)}>
+                <Box sx={{ width: 260 }} role="presentation" onClick={toggleDrawer(false)} onKeyDown={toggleDrawer(false)}>
+                  <List>
+                    <ListItem button>
+                      <ListItemText primary="Search" />
+                    </ListItem>
+                    <ListItem button onClick={() => authRef.current?.open()}>
+                      <ListItemText primary="Sign in / Account" />
+                    </ListItem>
+                  </List>
+                </Box>
+              </Drawer>
+            </Toolbar>
+          </AppBar>
+          {renderMobileMenu}
+          {renderMenu}
+          <BasicModal ref={authRef} />
+        </Box>
+
+      </Box>
+
+    </>
   );
 }
