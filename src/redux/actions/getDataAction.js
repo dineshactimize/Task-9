@@ -28,11 +28,8 @@ export const getProductDataActionInitiate = () => {
    
     try {
       const res = await fetchProductData();
-      // console.log("fetchProductData",res);
-      
       dispatch(getProductDataSuccess(res));
     } catch (error) {
-      // console.error("getProductDataError error", error);
       dispatch(getProductDataError(error.message));
     }
   };

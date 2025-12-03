@@ -16,16 +16,12 @@ class API {
  
   async get(url, data) {
     return new Promise((resolve, reject) => {
-      // console.log('this is getAPI');
       this.api(METHOD.GET, url, data)     
         .then((response) => {
           resolve(response);
-          
-          // console.log("this is response2",response)
         })
         .catch((error) => {
           toast.error("Something went wrong"); 
-          // console.log(error);
         });
     });
 
@@ -33,7 +29,6 @@ class API {
  
   post(url, data) {
     return new Promise((resolve, reject) => {
-      // console.log('this is postAPI');
       this.api(METHOD.POST, url, data)
         .then((response) => {
            if(response.data){
@@ -46,13 +41,11 @@ class API {
         })
         .catch((error) => {
           toast.error("Something went wrong"); 
-          // console.log(error);
         });
     });
   }
   put(url, data) {
     return new Promise((resolve, reject) => {
-      // console.log('this is putAPI');
       this.api(METHOD.PUT, url, data)
         .then((response) => {
           toast.success(" update request successfully");
@@ -60,13 +53,11 @@ class API {
         })
         .catch((error) => {
           toast.error("Something went wrong"); 
-          // console.log(error);
         });
     });
   }
   delete(url, data) {
     return new Promise((resolve, reject) => {
-      // console.log('this is deleteAPI');
       this.api(METHOD.DELETE, url, data)
         .then((response) => {
           toast.success(" delete request successfully");
@@ -74,13 +65,11 @@ class API {
         })
         .catch((error) => {
           toast.error("Something went wrong"); 
-          // console.log(error);
         });
     });
   }
   api(method, url, data) {
     return new Promise(( resolve,reject) => {
-      // console.log('this is mainAPI function');
       let axiosConfig = {};
       axiosConfig.method = method;
       axiosConfig.url = this.baseURL + url;
@@ -99,7 +88,6 @@ class API {
             toast.error("Something went wrong!!");
           } else {  
             resolve(response);
-            // console.log("this is response1")
             if (response) {
             }
             else if (response.status === 200) {
@@ -112,13 +100,11 @@ class API {
           }
         })
         .catch((error) => {
-          // console.log("ERROR", error);
         });
     });
   }
   setHeaders(data) {
     let headers = {};
-    // console.log('this is headers');
     headers["accept-language"] = "en";
     headers["Content-Type"] = "application/json";
     headers["Accept"] = "application/json";

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -62,7 +62,7 @@ export default function Home() {
 
   }
 
-   const redirectToEventPage = (id) => {
+  const redirectToEventPage = (id) => {
     navigate(`/events/${id}`)
 
   }
@@ -76,20 +76,20 @@ export default function Home() {
 
 
       <Container>
-        <Box sx={{ display: 'flex', justifyContent: 'end'}}>
+        <Box sx={{ display: 'flex', justifyContent: 'end' }}>
           <Box sx={{ width: "100%" }}>
             <Swiper {...heroSwiperProps}>
               <SwiperSlide>
-                <img src="https://res.cloudinary.com/doaaeqnk2/image/upload/v1763724526/1760430005960_popccweb_uhrlbp.avif" alt="image" style={{ width: '100%', height: 'auto', maxHeight: 520, objectFit: 'cover' }} />
+                <img src="https://res.cloudinary.com/doaaeqnk2/image/upload/v1763724526/1760430005960_popccweb_uhrlbp.avif" alt="image1" style={{ width: '100%', height: 'auto', maxHeight: 520, objectFit: 'cover' }} />
               </SwiperSlide>
               <SwiperSlide>
-                <img src="https://res.cloudinary.com/doaaeqnk2/image/upload/v1763724526/1763640698741_ariellaweb_sieteo.avif" alt="image" style={{ width: '100%', height: 'auto', objectFit: 'cover' }} />
+                <img src="https://res.cloudinary.com/doaaeqnk2/image/upload/v1763724526/1763640698741_ariellaweb_sieteo.avif" alt="image2" style={{ width: '100%', height: 'auto', objectFit: 'cover' }} />
               </SwiperSlide>
               <SwiperSlide>
-                <img src="https://res.cloudinary.com/doaaeqnk2/image/upload/v1763724526/1761907921032_amusementparkdesktop_oat006.avif" alt="image" style={{ width: '100%', height: 'auto', objectFit: 'cover' }} />
+                <img src="https://res.cloudinary.com/doaaeqnk2/image/upload/v1763724526/1761907921032_amusementparkdesktop_oat006.avif" alt="image3" style={{ width: '100%', height: 'auto', objectFit: 'cover' }} />
               </SwiperSlide>
               <SwiperSlide>
-                <img src="https://res.cloudinary.com/doaaeqnk2/image/upload/v1763724526/1763188137924_linkinparkwebnew_onk2gg.avif" alt="image" style={{ width: '100%', height: 'auto', objectFit: 'cover' }} />
+                <img src="https://res.cloudinary.com/doaaeqnk2/image/upload/v1763724526/1763188137924_linkinparkwebnew_onk2gg.avif" alt="image4" style={{ width: '100%', height: 'auto', objectFit: 'cover' }} />
               </SwiperSlide>
             </Swiper>
           </Box>
@@ -104,7 +104,7 @@ export default function Home() {
         <Swiper {...commonSwiperProps}>
           {movies?.map((itemm, index) => (
             <SwiperSlide key={index} onClick={() => redirectToMoviePage(itemm.title)}>
-              <Card sx={{ width: '100%', borderRadius: 4, overflow: 'hidden', my: 4,boxShadow:'none' }} elevation={3}>
+              <Card sx={{ width: '100%', borderRadius: 4, overflow: 'hidden', my: 4, boxShadow: 'none' }} elevation={3}>
                 <img
                   src={itemm.img}
                   alt={itemm.title}
@@ -131,8 +131,8 @@ export default function Home() {
         <Typography variant='h4' sx={{ mb: 2 }}>The best of Live events</Typography>
         <Swiper {...commonSwiperProps}>
           {events?.map((itemm, index) => (
-            <SwiperSlide key={index}  onClick={() => redirectToEventPage(itemm.title)}>
-              <Card sx={{ width: '100%',maxHeight:'540px', borderRadius: 4, overflow: 'hidden', my: 4,boxShadow:'none'  }} elevation={2}>
+            <SwiperSlide key={index} onClick={() => redirectToEventPage(itemm.title)}>
+              <Card sx={{ width: '100%', maxHeight: '540px', borderRadius: 4, overflow: 'hidden', my: 4, boxShadow: 'none' }} elevation={2}>
                 <img src={itemm.img} alt={itemm.title || 'event'} style={{ width: '100%', height: 'auto', aspectRatio: '1 / 1', objectFit: 'cover' }} />
               </Card>
             </SwiperSlide>
@@ -140,15 +140,14 @@ export default function Home() {
         </Swiper>
       </Container>
 
-        <Box sx={{bgcolor:'#2B3148'}}>
-      <Container>
+      <Box sx={{ bgcolor: '#2B3148' }}>
+        <Container>
           <Box>
-            <img alt="Tvod Offer" width="100%" height="100%" fetchpriority="auto" className="sc-eykeme-1 iVbwwW" style={{borderRadius:'0px', opacity: 1, transition: '0.5s', width: '100%' }} src="https://assets-in.bmscdn.com/discovery-catalog/collections/tr:w-1440,h-120/premiere-banner-web-collection-202208191200.png"></img>
-{/* <Typography variant='h4' sx={{ mb: 2 }}>premieres</Typography> */}
+            <img alt="Tvod Offer" width="100%" height="100%" fetchpriority="auto" className="sc-eykeme-1 iVbwwW" style={{ borderRadius: '0px', opacity: 1, transition: '0.5s', width: '100%' }} src="https://assets-in.bmscdn.com/discovery-catalog/collections/tr:w-1440,h-120/premiere-banner-web-collection-202208191200.png"></img>
           </Box>
           <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, justifyContent: { xs: 'center', md: 'space-evenly' } }}>
             {premieres?.map((itemm) => (
-              <Card sx={{ width: { xs: '100%', sm: 220, md: 255 },maxHeight:'540px', borderRadius: 4, overflow: 'hidden', my: 2,boxShadow:'none'  }} elevation={2}>
+              <Card sx={{ width: { xs: '100%', sm: 220, md: 255 }, maxHeight: '540px', borderRadius: 4, overflow: 'hidden', my: 2, boxShadow: 'none' }} elevation={2}>
                 <img src={itemm.img} alt={itemm.title || 'music'} style={{ width: '100%', height: 'auto', objectFit: 'cover' }} />
                 <CardContent sx={{ py: 2 }}>
                   <Typography variant="subtitle2" noWrap>{itemm.title}</Typography>
@@ -157,16 +156,15 @@ export default function Home() {
               </Card>
             ))}
           </Box>
-      </Container>
-        </Box>
-
+        </Container>
+      </Box>
 
       <Container sx={{ mt: 6, mb: 6 }}>
         <Typography variant='h4' sx={{ mb: 2 }}>Your Music Studio</Typography>
         <Swiper {...commonSwiperProps}>
           {music?.map((itemm, index) => (
             <SwiperSlide key={index}>
-              <Card sx={{ width: '100%',maxHeight:'540px', borderRadius: 4, overflow: 'hidden', my: 4,boxShadow:'none'  }} elevation={2}>
+              <Card sx={{ width: '100%', maxHeight: '540px', borderRadius: 4, overflow: 'hidden', my: 4, boxShadow: 'none' }} elevation={2}>
                 <img src={itemm.img} alt={itemm.title || 'music'} style={{ width: '100%', height: 'auto', objectFit: 'cover' }} />
                 <CardContent sx={{ py: 2 }}>
                   <Typography variant="subtitle2" noWrap>{itemm.title}</Typography>
@@ -185,7 +183,7 @@ export default function Home() {
         <Swiper {...commonSwiperProps}>
           {music?.map((itemm, index) => (
             <SwiperSlide key={index}>
-              <Card sx={{ width: '100%',maxHeight:'540px', borderRadius: 4, overflow: 'hidden', my: 4,boxShadow:'none'  }} elevation={2}>
+              <Card sx={{ width: '100%', maxHeight: '540px', borderRadius: 4, overflow: 'hidden', my: 4, boxShadow: 'none' }} elevation={2}>
                 <img src={itemm.img} alt={itemm.title || 'music'} style={{ width: '100%', height: 'auto', objectFit: 'cover' }} />
                 <CardContent sx={{ py: 2 }}>
                   <Typography variant="subtitle2" noWrap>{itemm.title}</Typography>
@@ -205,7 +203,7 @@ export default function Home() {
         <Swiper {...commonSwiperProps}>
           {music?.map((itemm, index) => (
             <SwiperSlide key={index}>
-              <Card sx={{ width: '100%',maxHeight:'540px', borderRadius: 4, overflow: 'hidden', my: 4,boxShadow:'none'  }} elevation={2}>
+              <Card sx={{ width: '100%', maxHeight: '540px', borderRadius: 4, overflow: 'hidden', my: 4, boxShadow: 'none' }} elevation={2}>
                 <img src={itemm.img} alt={itemm.title || 'music'} style={{ width: '100%', height: 'auto', objectFit: 'cover' }} />
                 <CardContent sx={{ py: 2 }}>
                   <Typography variant="subtitle2" noWrap>{itemm.title}</Typography>

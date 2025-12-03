@@ -4,7 +4,6 @@ const endPoints = "/bms";
 export const fetchProductData = async () => {
   return new Promise(async (resolve, reject) => {
     try {
-      // console.log("this is get call in API---->", endPoints);
       const response = await api.get(`${endPoints}.json`);
       console.log("fetched data", response);
       if (response && response.data) {
@@ -13,13 +12,11 @@ export const fetchProductData = async () => {
           ...response.data[key]
         }));
         resolve(fetchedData);
-        // console.log("fetchedData",fetchedData)
         return(fetchedData)
       } else {
         resolve([]); 
       }
     } catch (error) {
-      // console.error("Error in fetchProductData:", error);
       reject(error);
     }
   });

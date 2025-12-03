@@ -16,7 +16,6 @@ import ListItemText from '@mui/material/ListItemText';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MoreIcon from '@mui/icons-material/MoreVert';
-import bookmyshowLogo from '../../Assests/images/pngegg.png';
 import BasicModal from '../../pages/Auth';
 import { Avatar } from '@mui/material';
 
@@ -63,23 +62,20 @@ export default function PrimarySearchAppBar() {
   const authRef = React.useRef(null);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
   const [picture, setPicture] = React.useState();
   React.useEffect(() => {
     const saved = localStorage.getItem("google_user");
     if (saved) {
-      const userObj = JSON.parse(saved);   // ← REQUIRED
+      const userObj = JSON.parse(saved);
       console.log("Parsed user:", userObj);
       setPicture(userObj.picture);
-      // ← now works
     }
   }, []);
   React.useEffect(() => {
     console.log("PICTURE UPDATED:", picture);
   }, [picture]);
-
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -109,8 +105,6 @@ export default function PrimarySearchAppBar() {
     }
     setDrawerOpen(open);
   };
-
-
 
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
@@ -189,7 +183,6 @@ export default function PrimarySearchAppBar() {
                 </IconButton>
         <p>Profile</p>
       </MenuItem>
-       {/* <MenuItem onClick={logout}>Log Out</MenuItem> */}
     </Menu>
   );
   return (
@@ -198,14 +191,13 @@ export default function PrimarySearchAppBar() {
         <Box sx={{ flexGrow: 1 }}>
           <AppBar sx={{ bgcolor: "white", color: "black" }} position="static">
             <Toolbar>
-
               <Typography
                 variant="h6"
                 noWrap
                 component="div"
                 sx={{ display: 'block', mr: 2 }}
               >
-                <a href="/"><img src={bookmyshowLogo} alt="BookMyShow" style={{ height: 40, objectFit: 'contain', maxWidth: '140px' }} /></a>
+                <a href="/"><img src="https://res.cloudinary.com/doaaeqnk2/image/upload/v1763723952/pngegg_qtrb5z.png" alt="BookMyShow" style={{ height: 40, objectFit: 'contain', maxWidth: '140px' }} /></a>
               </Typography>
               <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
                 <Search>
@@ -220,7 +212,6 @@ export default function PrimarySearchAppBar() {
               </Box>
               <Box sx={{ flexGrow: 1 }} />
               <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-
                 <IconButton
                   size="large"
                   edge="end"
@@ -296,9 +287,7 @@ export default function PrimarySearchAppBar() {
           {renderMenu}
           <BasicModal ref={authRef} />
         </Box>
-
       </Box>
-
     </>
   );
 }

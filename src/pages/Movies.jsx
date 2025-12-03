@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import { getProductDataActionInitiate } from '../redux/actions/getDataAction';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-import { Button,Stack, IconButton } from "@mui/material";
+import { Button, Stack, IconButton } from "@mui/material";
 import ShareIcon from "@mui/icons-material/Share";
 import StarIcon from '@mui/icons-material/Star';
 import { useParams } from 'react-router';
@@ -27,40 +27,40 @@ const Movies = () => {
   const movies = d[idd]?.['Recommended Movies'] || [];
   console.log('jjidsfhuygffuuWHF', movies)
   const movie = movies.find((temp) => (temp.title === id)) || []
-  console.log('dafhaiugf', movie) 
- 
- const handlePayment = async () => {
-   
-      const options = {
-        key: "rzp_test_Rl9SLwtladWoZT",  
-        amount: 125*100,
-        currency: 'INR',
-        name: "Movie Ticket Booking",
-        description: `Booking for ${movie.title}`,
-        handler: function (response) {
-          alert("Payment Successful!");
-          console.log("Payment Response:", response);
-        },
-        prefill: {
-          name: "Dinesh",
-          email: "dinesh@example.com",
-          contact: "7777777777",
-        },
-        theme: {
-          color: "#ee4646ff",
-        },
-      };
-       const rzp1 = new window.Razorpay(options);
-                    rzp1.on("payment.failed", function (response) {
-                        console.log("Payment failed", response.error);
-                        alert("Payment failed. Please try again.");
-                    });
-                    rzp1.open();
+  console.log('dafhaiugf', movie)
+
+  const handlePayment = async () => {
+
+    const options = {
+      key: "rzp_test_Rl9SLwtladWoZT",
+      amount: 125 * 100,
+      currency: 'INR',
+      name: "Movie Ticket Booking",
+      description: `Booking for ${movie.title}`,
+      handler: function (response) {
+        alert("Payment Successful!");
+        console.log("Payment Response:", response);
+      },
+      prefill: {
+        name: "Dinesh",
+        email: "dinesh@example.com",
+        contact: "7777777777",
+      },
+      theme: {
+        color: "#ee4646ff",
+      },
+    };
+    const rzp1 = new window.Razorpay(options);
+    rzp1.on("payment.failed", function (response) {
+      console.log("Payment failed", response.error);
+      alert("Payment failed. Please try again.");
+    });
+    rzp1.open();
   }
 
-    useEffect(() => {
-      window.scrollTo(0, 0);
-    }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
 
   return (
@@ -119,7 +119,7 @@ const Movies = () => {
       <Container>
         <Box>
           <Box >
-            <Typography variant='h4' sx={{ pb: 2, fontWeight: "bold",mt:5 }}>
+            <Typography variant='h4' sx={{ pb: 2, fontWeight: "bold", mt: 5 }}>
               About the movie
             </Typography>
             <Typography sx={{ maxWidth: '100%' }}>
@@ -128,7 +128,7 @@ const Movies = () => {
           </Box>
 
           <Box>
-            <Typography variant='h4' sx={{pt:5}} fontWeight={"bold"}>
+            <Typography variant='h4' sx={{ pt: 5 }} fontWeight={"bold"}>
               Top Offer For You
             </Typography>
             <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 2, mt: 2 }}>
@@ -145,25 +145,25 @@ const Movies = () => {
             </Box>
           </Box>
 
-           <Typography sx={{pt:5}} variant='h4'>Cast</Typography>
-           <Box sx={{display:'flex',justifyContent:'center',flexWrap:'wrap',p: { xs:2, md:5 }, gap:2}}>
-           
-            <Box sx={{p:1,textAlign:'center'}}>
-              <img src="https://assets-in.bmscdn.com/iedb/artist/images/website/poster/large/akhil-raj-uddemari-2052611-1763441589.jpg" alt="" style={{width:120,maxWidth:120,height:'auto',borderRadius:5}} />
+          <Typography sx={{ pt: 5 }} variant='h4'>Cast</Typography>
+          <Box sx={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', p: { xs: 2, md: 5 }, gap: 2 }}>
+
+            <Box sx={{ p: 1, textAlign: 'center' }}>
+              <img src="https://assets-in.bmscdn.com/iedb/artist/images/website/poster/large/akhil-raj-uddemari-2052611-1763441589.jpg" alt="" style={{ width: 120, maxWidth: 120, height: 'auto', borderRadius: 5 }} />
               <p>Akhil Raj Uddemari</p>
               <p>Actor  </p>
             </Box>
-            <Box sx={{p:1,textAlign:'center'}}>
-              <img src="https://assets-in.bmscdn.com/iedb/artist/images/website/poster/large/tejaswi-rao-2039103-1763441632.jpg" alt="" style={{width:120,maxWidth:120,height:'auto',borderRadius:5}} />
+            <Box sx={{ p: 1, textAlign: 'center' }}>
+              <img src="https://assets-in.bmscdn.com/iedb/artist/images/website/poster/large/tejaswi-rao-2039103-1763441632.jpg" alt="" style={{ width: 120, maxWidth: 120, height: 'auto', borderRadius: 5 }} />
               <p>Tejaswi Rao</p>
               <p>Actor  </p>
             </Box>
-            <Box sx={{p:1,textAlign:'center'}}>
-              <img src="https://assets-in.bmscdn.com/iedb/artist/images/website/poster/large/chaitu-jonnalagadda-2032892-1763441665.jpg" alt="" style={{width:120,maxWidth:120,height:'auto',borderRadius:5}} />
+            <Box sx={{ p: 1, textAlign: 'center' }}>
+              <img src="https://assets-in.bmscdn.com/iedb/artist/images/website/poster/large/chaitu-jonnalagadda-2032892-1763441665.jpg" alt="" style={{ width: 120, maxWidth: 120, height: 'auto', borderRadius: 5 }} />
               <p>Chaitu Jonnalagadda</p>
               <p>Actor  </p>
             </Box>
-           </Box>
+          </Box>
         </Box>
       </Container>
 

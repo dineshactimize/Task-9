@@ -2,14 +2,12 @@ body{
         margin: 0;
 }
 
-/* Responsive base rules */
 img, video, svg {
     max-width: 100%;
     height: auto;
     display: block;
 }
 
-/* Utility: keep aspect ratio boxes */
 .ratio-16-9 {
     position: relative;
     width: 100%;
@@ -20,24 +18,20 @@ img, video, svg {
     top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;
 }
 
-/* Small typographic scale adjustments */
 @media (max-width:600px) {
     html { font-size: 14px; }
 }
 
-/* Swiper slide centering helper: keep slide content centered */
 .mySwiper .swiper-slide {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* On very small devices allow slightly smaller base font */
 @media (max-width:360px) {
     html { font-size: 13px; }
 }
 
-/* Improve navigation button visibility and hit area */
 .mySwiper .swiper-button-next,
 .mySwiper .swiper-button-prev {
     color: #fff;
@@ -58,6 +52,5 @@ img, video, svg {
     font-size: 10px;
 }
 
-/* Ensure navigation buttons are clickable above footer/overlays */
 .swiper-button-disabled { opacity: 0.35 !important; }
 

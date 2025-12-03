@@ -14,11 +14,10 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-      <GoogleOAuthProvider clientId={CLIENT_ID}>
-        <App />
-      </GoogleOAuthProvider>
-        
-       
+        <GoogleOAuthProvider clientId={CLIENT_ID}>
+          <App />
+        </GoogleOAuthProvider>
+
       </BrowserRouter>
     </Provider>
   </React.StrictMode>
